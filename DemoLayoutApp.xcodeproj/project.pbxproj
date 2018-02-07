@@ -14,6 +14,8 @@
 		AC45C93D202468AF0014A10E /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = AC45C93B202468AF0014A10E /* LaunchScreen.storyboard */; };
 		AC45C948202468AF0014A10E /* DemoLayoutAppTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC45C947202468AF0014A10E /* DemoLayoutAppTests.swift */; };
 		AC45C953202468AF0014A10E /* DemoLayoutAppUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC45C952202468AF0014A10E /* DemoLayoutAppUITests.swift */; };
+		ACA8071F202B060600E00818 /* ViewController in Sources */ = {isa = PBXBuildFile; fileRef = ACA8071E202B060600E00818 /* ViewController */; };
+		ACA80721202B0FA900E00818 /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACA80720202B0FA900E00818 /* HomeViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -47,6 +49,8 @@
 		AC45C94E202468AF0014A10E /* DemoLayoutAppUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = DemoLayoutAppUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		AC45C952202468AF0014A10E /* DemoLayoutAppUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DemoLayoutAppUITests.swift; sourceTree = "<group>"; };
 		AC45C954202468AF0014A10E /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		ACA8071E202B060600E00818 /* ViewController */ = {isa = PBXFileReference; lastKnownFileType = text; path = ViewController; sourceTree = "<group>"; };
+		ACA80720202B0FA900E00818 /* HomeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -99,10 +103,12 @@
 			children = (
 				AC45C932202468AE0014A10E /* AppDelegate.swift */,
 				AC45C934202468AE0014A10E /* ViewController.swift */,
+				ACA8071E202B060600E00818 /* ViewController */,
 				AC45C936202468AF0014A10E /* Main.storyboard */,
 				AC45C939202468AF0014A10E /* Assets.xcassets */,
 				AC45C93B202468AF0014A10E /* LaunchScreen.storyboard */,
 				AC45C93E202468AF0014A10E /* Info.plist */,
+				ACA80720202B0FA900E00818 /* HomeViewController.swift */,
 			);
 			path = DemoLayoutApp;
 			sourceTree = "<group>";
@@ -260,7 +266,9 @@
 			buildActionMask = 2147483647;
 			files = (
 				AC45C935202468AE0014A10E /* ViewController.swift in Sources */,
+				ACA8071F202B060600E00818 /* ViewController in Sources */,
 				AC45C933202468AE0014A10E /* AppDelegate.swift in Sources */,
+				ACA80721202B0FA900E00818 /* HomeViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -427,7 +435,9 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = DV636QFZ5Q;
 				INFOPLIST_FILE = DemoLayoutApp/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = nagarro.DemoLayoutApp;
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -441,7 +451,9 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = DV636QFZ5Q;
 				INFOPLIST_FILE = DemoLayoutApp/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = nagarro.DemoLayoutApp;
 				PRODUCT_NAME = "$(TARGET_NAME)";
