@@ -11,24 +11,21 @@ import LocalAuthentication
 
 class ViewController: UIViewController {
     
-   
+    //strings declarations
+    let okay : String = "Ok"
+    let touchIdNotAvailable: String = "Touch ID not available or Not Configured"
+    let errorMsg :String = "put here an error msg"
+    let authFailed : String = "AuthenticationFailed"
+    let unauthorizedUser : String = "Not a Authorised User"
+    let touchIdLogin : String = "Please use touch Id to Login"
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-        
-        // Do any additional setup after loading the view, typically from a nib.
     }
-
- 
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
-    }
-
-   
-   
+    
+    
     @IBAction func touchIdButton(_ sender: Any) {
-        authenticationUsingTouchID()
-        print("in touch id button function")
+        self.authenticationUsingTouchID()
     }
     
     func authenticationUsingTouchID(){
@@ -36,38 +33,46 @@ class ViewController: UIViewController {
         var authError : NSError?
         
         if(authContext.canEvaluatePolicy(LAPolicy.deviceOwnerAuthenticationWithBiometrics, error: &authError)){
-            //touch Id is available in the device
-            authContext.evaluatePolicy(LAPolicy.deviceOwnerAuthenticationWithBiometrics, localizedReason: "please use touch ID to login", reply: {(success, error) -> Void in
+            
+            //touch Id is available on the device
+            authContext.evaluatePolicy(LAPolicy.deviceOwnerAuthenticationWithBiometrics, localizedReason: self.touchIdLogin, reply: {(success, error) -> Void in
                 if success {
-                    print("succesfully logged in")
+                
+                    // push to new ViewController (WelcomePage)
                     let storyBoard = UIStoryboard(name: "Main", bundle:nil)
-                    
                     let objSomeViewController = storyBoard.instantiateViewController(withIdentifier: "HomeViewController") as! HomeViewController
                     
-                    // If you want to push to new ViewController then use this
-                    DispatchQueue.main.async {
+                    let randomQueue = DispatchQueue(label: "q1", qos : .userInteractive)
+                   
+                     randomQueue.async {
+                        print("in dealock 1")
+                        randomQueue.sync {
+                             print("in dealock 2")
                         self.navigationController?.pushViewController(objSomeViewController, animated: true)
+                      }
                     }
-                    print("sdhajk")
+//                    DispatchQueue.main.async {
+//                       self.navigationController?.pushViewController(objSomeViewController, animated: true)
+//                   }
                 }
-            else{
-                print("not a authorised user")
-            }
-          })
+                else{
+                    self.notifyUser(self.authFailed, err: self.unauthorizedUser)
+                }
+             })
         }else{
+            
             //touchID not available
-            let alert = UIAlertController(title: "touch ID not available", message: "error msg", preferredStyle: .alert)
-            
-            let cancelAction = UIAlertAction(title: "OK",
-                                             style: .cancel, handler: nil)
-            
-            alert.addAction(cancelAction)
-            
-            self.present(alert, animated: true,
-                         completion: nil)
-            print(authError!.localizedDescription)
+            self.notifyUser(self.touchIdNotAvailable, err: self.errorMsg)
         }
     }
     
+    
+    func notifyUser(_ msg: String, err: String?) {
+        let alert = UIAlertController(title: msg, message: err, preferredStyle: .alert)
+        
+        let cancelAction = UIAlertAction(title: okay, style: .cancel, handler: nil)
+        alert.addAction(cancelAction)
+        self.present(alert, animated: true, completion: nil)
+    }
 }
 
